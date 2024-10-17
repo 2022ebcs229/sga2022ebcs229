@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.sga2022ebcs229.CustomerRepo;
 import com.example.sga2022ebcs229.model.Customer;
@@ -29,11 +30,12 @@ public class CustomerController {
     }
 
     @GetMapping("customer/{custid}")
-    public String getCustomer(@PathVariable("custid") int id, Model model){
+    public ModelAndView getCustomer(@PathVariable("custid") int id, ModelAndView mv){
 
-        model.addAttribute("customer", repo.findById(id));
+        mv.addObject("customer", repo.findById(id));
+        mv.setViewName("customer");
 
-        return "customer";
+        return mv;
     }
 
     @GetMapping("customers")
