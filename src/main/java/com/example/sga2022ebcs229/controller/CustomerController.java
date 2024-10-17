@@ -1,13 +1,21 @@
 package com.example.sga2022ebcs229.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.origin.SystemEnvironmentOrigin;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.sga2022ebcs229.CustomerRepo;
 import com.example.sga2022ebcs229.model.Customer;
+
 
 @Controller
 public class CustomerController {
+
+    @Autowired
+    CustomerRepo repo;
     
     @GetMapping("customerReg")
     public String custRegPage(){
@@ -16,7 +24,17 @@ public class CustomerController {
 
     @PostMapping("customer")
     public String addCustomer(Customer customer) {
-        return "customerAddSuccess";
+        repo.save(customer);
+        return "customer";
     }
+
+    @GetMapping("customers")
+    public String getCustomers() {
+        System.out.println(repo.findAll());
+        System.out.println(repo.findById(1));
+        System.out.println(repo.findByP(1));
+        return "index";
+    }
+    
     
 }
