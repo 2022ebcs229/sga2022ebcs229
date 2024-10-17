@@ -13,4 +13,8 @@ public interface CustomerRepo extends JpaRepository<Customer, Integer> {
     @Query("select c from Customer c where c.id >?1")
     List<Customer> findByP(int i);
 
+    List<Customer> findByEmail(String email);
+    
+    List<Customer> findByIdGreaterThan(int i);
+    
 }
