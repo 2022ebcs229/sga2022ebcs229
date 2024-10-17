@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.sga2022ebcs229.model.Customer;
 import com.example.sga2022ebcs229.repository.CustomerRepo;
+import com.example.sga2022ebcs229.service.CustomerService;
 
 
 @Controller
@@ -23,9 +24,10 @@ public class CustomerController {
     }
 
     @Autowired
-    CustomerRepo repo;
+    CustomerRepo repo;    
 
-    
+    @Autowired
+    CustomerService service;
     
     @GetMapping("customerReg")
     public String custRegPage(){
@@ -35,14 +37,14 @@ public class CustomerController {
     @PostMapping("customer")
     public String addCustomer(Customer customer) {
         //if JSP variable has different name than customer then use addCustomer(@ModelAttribute("variable_name") Customer customer)
-        repo.save(customer);
+        service.save(customer);
         return "customer";
     }
 
     @GetMapping("customer/{custid}")
     public ModelAndView getCustomer(@PathVariable("custid") int id, ModelAndView mv){
 
-        mv.addObject("customer", repo.findById(id));
+        mv.addObject("customer", service.findById(id));
         mv.setViewName("customer");
 
         return mv;
@@ -50,12 +52,7 @@ public class CustomerController {
 
     @GetMapping("customers")
     public String getCustomers() {
-        System.out.println(repo.findAll());
-        System.out.println(repo.findById(1));
-        System.out.println(repo.findByP(1));
-        System.out.println(repo.findByIdGreaterThan(1));
-        System.out.println(repo.findByEmail("makarand.khare@gmail.com"));
-        //repo.delete(repo.findById(1).orElse(null));
+        service.getCustomers();
         return "index";
     }
     

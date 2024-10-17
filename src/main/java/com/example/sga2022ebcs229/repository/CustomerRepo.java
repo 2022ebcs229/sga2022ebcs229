@@ -10,6 +10,8 @@ import com.example.sga2022ebcs229.model.Customer;
 @Repository
 public interface CustomerRepo extends JpaRepository<Customer, Integer> {
 
+
+    //https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html
     @Query("select c from Customer c where c.id >?1")
     List<Customer> findByP(int i);
 
