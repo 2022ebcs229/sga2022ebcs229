@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.sga2022ebcs229.CustomerRepo;
 import com.example.sga2022ebcs229.model.Customer;
+import com.example.sga2022ebcs229.repository.CustomerRepo;
 
 
 @Controller

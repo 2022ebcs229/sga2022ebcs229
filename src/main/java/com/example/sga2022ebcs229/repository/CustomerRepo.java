@@ -1,4 +1,4 @@
-package com.example.sga2022ebcs229;
+package com.example.sga2022ebcs229.repository;
 
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
