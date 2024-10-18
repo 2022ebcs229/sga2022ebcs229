@@ -2,7 +2,6 @@ package com.example.sga2022ebcs229.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.sga2022ebcs229.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
