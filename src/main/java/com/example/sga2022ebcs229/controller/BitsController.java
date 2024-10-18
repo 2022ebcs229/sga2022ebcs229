@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.sga2022ebcs229.repository.CustomerRepo;
 import com.example.sga2022ebcs229.service.CustomerService;
 
 @Controller
