@@ -43,7 +43,7 @@ public class BitsController {
     @PostMapping("item")
     public String saveItem(Menu menu) {
         menuService.save(menu);
-        return "index";
+        return "redirect:/";
     }
 
     @GetMapping("customerReg")
@@ -80,7 +80,7 @@ public class BitsController {
     @PostMapping("delCustDone")
     public String deleteCustomer(int id) {
         customerService.delete(id);
-        return "index";
+        return "redirect:/";
     }
 
     @GetMapping("deleteItem")
