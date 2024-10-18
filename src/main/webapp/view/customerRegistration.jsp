@@ -11,6 +11,7 @@
   </head>
   <body>
     ${cr}<br><br><br>
+    <a href="http://localhost:8080"> Return to home page </a>
     <div class="container">
         <div class="header">
             <h2>Create Account</h2>
