@@ -1,5 +1,7 @@
 package com.example.sga2022ebcs229.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,10 @@ public class MenuService {
 
     public void save(Menu menu) {
         menuRepo.save(menu);
+    }
+
+    public List<Menu> findAllMenu() {
+        return menuRepo.findAll();
     }
     
 }

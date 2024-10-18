@@ -58,13 +58,20 @@ public class BitsController {
         return "customer";
     }
 
+    @GetMapping("menu")
+    public ModelAndView getMenu(ModelAndView mv) {
+        mv.addObject("menu", menuService.findAllMenu());
+        mv.setViewName("menu");
+        return mv;
+    }
+
     @GetMapping("customers")
     public ModelAndView getCustomers(ModelAndView mv) {
         mv.addObject("customers", customerService.findAllCustomers());
         mv.setViewName("customers");
         return mv;
     }
-    
+
     @GetMapping("deleteCustomer")
      public String deleteCustomerPage(){
         return "deleteCustomer";
