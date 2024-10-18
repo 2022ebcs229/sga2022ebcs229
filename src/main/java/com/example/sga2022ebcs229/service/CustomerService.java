@@ -1,5 +1,7 @@
 package com.example.sga2022ebcs229.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,24 +12,32 @@ import com.example.sga2022ebcs229.repository.CustomerRepo;
 public class CustomerService {
 
     @Autowired
-    CustomerRepo repo; 
+    CustomerRepo customerRepo; 
+
+    public void delete(int i){
+        customerRepo.delete(customerRepo.findById(i).orElse(null));
+    }
 
     public void save(Customer customer){
-        repo.save(customer);
+        customerRepo.save(customer);
     }
 
     public Customer findById(int id){
-        return repo.findById(id).orElse(new Customer());
+        return customerRepo.findById(id).orElse(new Customer());
     }
 
     public void getCustomers() {
-        System.out.println(repo.findAll());
-        System.out.println(repo.findById(1));
-        System.out.println(repo.findByP(1));
-        System.out.println(repo.findByIdGreaterThan(1));
-        System.out.println(repo.findByEmail("makarand.khare@gmail.com"));
-        //repo.delete(repo.findById(1).orElse(null));
+        // System.out.println(customerRepo.findAll());
+        // System.out.println(customerRepo.findById(1));
+        // System.out.println(customerRepo.findByP(1));
+        // System.out.println(customerRepo.findByIdGreaterThan(1));
+        // System.out.println(customerRepo.findByEmail("makarand.khare@gmail.com"));
+        //customerRepo.delete(customerRepo.findById(1).orElse(null));
         
+    }
+
+    public List<Customer> findAllCustomers() {
+        return customerRepo.findAll();
     }
     
 }

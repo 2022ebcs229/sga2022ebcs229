@@ -19,7 +19,6 @@ public class BitsController {
     //this variable 'cr' is available for all the jsp pages 
     @ModelAttribute("cr")
     public String cr(){
-        System.out.println("in cr method");
         return "© Makarand Khare";
     }
 
@@ -29,14 +28,11 @@ public class BitsController {
     } 
 
     @Autowired
-    CustomerRepo repo;    
-
-    @Autowired
     CustomerService service;
     
     @GetMapping("customerReg")
     public String custRegPage(){
-        return "customerRegistration";
+        return "customerReg";
     }
 
     @PostMapping("customer")
@@ -46,20 +42,31 @@ public class BitsController {
         return "customer";
     }
 
-    @GetMapping("customer/{custid}")
-    public ModelAndView getCustomer(@PathVariable("custid") int id, ModelAndView mv){
-
-        mv.addObject("customer", service.findById(id));
-        mv.setViewName("customer");
-
+    @GetMapping("customers")
+    public ModelAndView getCustomers(ModelAndView mv) {
+        mv.addObject("customers", service.findAllCustomers());
+        mv.setViewName("customers");
         return mv;
     }
-
-    @GetMapping("customers")
-    public String getCustomers() {
-        service.getCustomers();
+    
+    @GetMapping("deleteCustomer")
+     public String deleteCustomerPage(){
+        return "deleteCustomer";
+    }
+    
+    @PostMapping("delCustDone")
+    public String deleteCustomer(int id) {
+        service.delete(id);
         return "index";
     }
     
-     
 }
+
+    // @GetMapping("customer/{custid}")
+    // public ModelAndView getCustomer(@PathVariable("custid") int id, ModelAndView mv){
+
+    //     mv.addObject("customer", service.findById(id));
+    //     mv.setViewName("customer");
+
+    //     return mv;
+    // }
