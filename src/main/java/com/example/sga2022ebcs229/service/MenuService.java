@@ -14,6 +14,10 @@ public class MenuService {
     @Autowired
     MenuRepo menuRepo;
 
+    public void delete(int i){
+        menuRepo.delete(menuRepo.findById(i).orElse(null));
+    }
+
     public void save(Menu menu) {
         menuRepo.save(menu);
     }

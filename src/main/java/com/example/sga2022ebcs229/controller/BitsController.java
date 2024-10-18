@@ -82,7 +82,20 @@ public class BitsController {
         customerService.delete(id);
         return "index";
     }
-    
+
+    @GetMapping("deleteItem")
+    public String deleteItemPage(){
+       return "deleteItem";
+   }
+   
+   @PostMapping("delDish")
+   public ModelAndView deleteItem(int id, ModelAndView mv) {
+       menuService.delete(id);
+       mv.addObject("menu", menuService.findAllMenu());
+       mv.setViewName("menu");
+       return mv;
+   }
+
 }
 
     // @GetMapping("customer/{custid}")
